@@ -25,7 +25,6 @@ RUN mkdir -p /app/data /app/uploads /app/instance && \
 COPY docker-entrypoint.sh /app/
 RUN chmod +x /app/docker-entrypoint.sh
 
-EXPOSE 5000
+EXPOSE 10000
 
-# Starte die App über den entrypoint
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
+CMD ["python", "-c", "import os; os.environ.setdefault('PORT', '10000'); exec(open('app.py').read())"]
